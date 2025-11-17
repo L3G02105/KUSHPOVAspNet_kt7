@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Админ-панель</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        .admin-nav {
+            background-color: #343a40;
+            padding: 15px 0;
+        }
+        .admin-nav a {
+            color: white;
+            margin-right: 15px;
+        }
+        .admin-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-nav">
+        <div class="container">
+            <a asp-controller="Admin" asp-action="Index">Главная</a>
+            <a asp-controller="Admin" asp-action="Users">Пользователи</a>
+            <a href="#">Настройки</a>
+            <a href="#">Отчеты</a>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                <button type="submit" class="btn btn-link text-white" title="Выход">
+                    <i class="fas fa-sign-out-alt"></i> Выход
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container admin-content">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
